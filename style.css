@@ -1,0 +1,322 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  object-fit: fill;
+  overflow: hidden;
+  background: transparent;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+/* === Posicionamiento general del reproductor === */
+#mp3Player {
+  position: relative;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  font-family: 'Roboto', sans-serif;
+  
+  height: auto;
+}
+
+/* === Contenedor principal de título, artista y botón === */
+.track-info {
+  width: 90%;                      /* ancho general del bloque */
+  display: flex;                   /* distribución horizontal */
+  justify-content: space-between;  /* texto a la izquierda, botón a la derecha */
+  align-items: center;             /* centrado vertical */
+           /* guía visual opcional */
+}
+
+/* === Contenedor de texto (título + artista) === */
+.track-info-text {
+  flex: 1;                         /* ocupa el espacio restante antes del botón */
+  max-width: 80%;                  /* límite de ancho del bloque de texto */
+  display: flex;                   
+  flex-direction: column;          /* apila título y artista verticalmente */
+  align-items: flex-start;         /* alineación a la izquierda */
+  text-align: left;
+        /* guía visual opcional */
+}
+
+/* === Título de la canción === */
+.track-title {
+  width: 100%;                     /* ocupa todo el espacio del bloque de texto */
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;                /* necesario para detección visual */
+  white-space: nowrap;             /* evita salto de línea */
+           /* guía visual opcional */
+}
+
+/* === Nombre del artista === */
+.track-artist {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+
+/* Botón more al extremo derecho */
+#more-btn {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  /*outline: 1px solid black;*/
+}
+
+#more-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #111;
+}
+
+/* === Barra de progreso === */
+.progress-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  /*outline: 2px solid black;*/
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #bdc3c7;
+  border-radius: 12px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ff4200;
+  border-radius: 50%;
+}
+
+/* === Display de tiempos === */
+.time-display {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  /*outline: 2px solid pink;*/
+  margin-top: -5px;
+}
+
+/* === Controles === */
+.controls-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  /*outline: 2px solid yellow;*/
+}
+
+/* Solo afecta a los textos dentro de la top row */
+.controls-row.top-row .label {
+  font-size: 14px;
+  font-weight: cursive;
+  color: #111;
+  margin-left: 6px;
+  transition: color 0.2s;
+}
+
+.top-row {
+  width: 90%;
+  justify-content: space-between;
+  gap: 2px;
+  /*outline: 2px solid red;*/
+}
+
+.middle-row {
+  width: 90%;
+  justify-content: space-between;
+  gap: 8px;
+  /*outline: 2px solid orange;*/
+  margin-top: -12px;
+}
+
+.bottom-row {
+  width: 100%;
+  justify-content: space-between;
+  gap: 0px;
+  /*outline: 2px solid yellow;*/
+  margin-top: 5px;
+}
+
+.bottom-row button:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* === Botones generales === */
+button {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /*outline: 1px solid black;*/
+}
+
+button:hover svg {
+  transform: scale(1.1);
+}
+
+/* === Botones de texto === */
+.text-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #111;
+}
+
+.text-btn:hover {
+  color: #ff4200;
+}
+
+/* === Toggle Play/Pause === */
+#playPause-btn {
+  position: relative;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#circle svg {
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+#play-icon svg,
+#pause-icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  fill: #FFFFFF;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Cambios de estado del icono shuffle */
+#shuffle-btn { position: relative; }
+#shuffle-icon { display: inline-block; }
+
+/* Puntito solo en estado ON */
+.shuffle-state-on::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;        /* ajusta según el tamaño del SVG */
+  right: 50%;
+  transform: translateX(50%);
+  width: 4px;         /* tamaño del puntito */
+  height: 4px;
+  border-radius: 50%;
+  background-color: #ff4200;
+}
+
+/* Cambios de estado del icono play-pause */
+#playPause-btn.paused #play-icon { display: inline-block; }
+#playPause-btn.paused #pause-icon { display: none; }
+#playPause-btn.playing #play-icon { display: none; }
+#playPause-btn.playing #pause-icon { display: inline-block; }
+
+/* Cambios de estado del icono repeat */
+#repeat-btn { position: relative; }
+.repeat-icon { display: none; }
+
+/* Estado OFF: icono normal */
+.repeat-state-off #repeat-all-icon { display: inline-block; }
+
+/* Estado ALL: icono normal + dot */
+.repeat-state-all #repeat-all-icon { display: inline-block; }
+.repeat-state-all::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;        /* ajusta para que quede justo debajo del SVG */
+  right: 50%;
+  transform: translateX(50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #ff4200;
+}
+
+/* Estado ONE: */
+.repeat-state-on #repeat-one-icon { display: inline-block; }
+
+
+#like-off-icon { display: inline-block; }
+#like-on-icon { display: none; }
+
+#like-btn.liked #like-off-icon { display: none; }
+#like-btn.liked #like-on-icon { display: inline-block; }
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.section1 {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: relative;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* ocupa todo el alto y ancho del contenedor */
+}
+
+#mp3Player {
+  position: relative;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: "Roboto", sans-serif;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diana's Gift</title>
+
+  <!-- 🎨 Hoja de estilo externa desde jsDelivr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alexander7l/styles@main/sylesSection1.css">
+
+  <!-- 💅 CSS local (el del editor CodePen) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 🌸 Sección 1 con imagen -->
+  <div class="section1" id="section1">
+    <div class="image-container">
+      <img
+        id="bgImage"
+        src="https://github.com/alexander7l/Flowers-Diana-Gift-Background-/blob/main/Background6.png?raw=true"
+        alt="Background Image"
+      />
+    </div>
+  </div>
+
+  <!-- 🎵 Reproductor MP3 -->
+  <div id="mp3Player">
+
+    <!-- Título y artista -->
+    <div class="track-info">
+      <div class="track-info-text">
+        <h3 class="track-title">Song Title</h3>
+        <p class="track-artist">Artist Name</p>
+      </div>
+      <button id="more-btn"><span id="more-icon"></span></button>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-container">
+      <input type="range" id="progress" value="0" min="0" step="0.1">
+    </div>
+
+    <!-- Tiempo -->
+    <div class="time-display">
+      <span id="currentTime">0:00</span>
+      <span id="totalTime">0:00</span>
+    </div>
+
+    <!-- Controles -->
+    <div class="controls-row middle-row">
+      <button id="like-btn" class="like-state-off">
+        <span id="like-off-icon" class="like-icon"></span>
+        <span id="like-on-icon" class="like-icon"></span>
+      </button>
+      <button id="shuffle-btn"><span id="shuffle-icon"></span></button>
+      <button id="previous-btn"><span id="previous-icon"></span></button>
+      <button id="playPause-btn" class="paused">
+        <span id="circle"></span>
+        <span id="play-icon"></span>
+        <span id="pause-icon"></span>
+      </button>
+      <button id="next-btn"><span id="next-icon"></span></button>
+      <button id="repeat-btn" class="repeat-state-off">
+        <span id="repeat-all-icon" class="repeat-icon"></span>
+        <span id="repeat-one-icon" class="repeat-icon"></span>
+      </button>
+      <button id="list-btn"><span id="list-icon"></span></button>
+    </div>
+
+    <!-- Fila de botones de texto -->
+    <div class="controls-row bottom-row">
+      <button class="text-btn">Letter to Diana</button>
+      <button class="text-btn">Lyrics</button>
+      <button class="text-btn">Your Playlist</button>
+    </div>
+
+    <!-- Modal bottom sheet -->
+    <dialog id="bottom-sheet" aria-labelledby="bs-title">
+      <h2 id="bs-title" class="visually-hidden">Opciones del reproductor</h2>
+      <ul class="sheet-list">
+        <li><button class="sheet-option"><span id="youtube-icon"></span><span class="label">YouTube</span></button></li>
+        <li><button class="sheet-option"><span id="share-icon"></span><span class="label">Compartir</span></button></li>
+        <li><button class="sheet-option"><span id="comment-icon"></span><span class="label">Comentarios</span></button></li>
+        <li><button class="sheet-option"><span id="info-icon"></span><span class="label">Información</span></button></li>
+      </ul>
+    </dialog>
+  </div>
+
+  <!-- 📜 Scripts externos -->
+  <script src="https://cdn.jsdelivr.net/gh/alexander7l/scripts@main/mp3-svg-loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alexander7l/scripts@main/portrait-svg-loader.js"></script>
+
+  <!-- 💻 JS local -->
+  <script src="main.js"></script>
+</body>
+</html>
